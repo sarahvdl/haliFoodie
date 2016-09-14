@@ -3,6 +3,7 @@ import StarRating from './StarRating';
 import * as restaurantActions from '../actions/restaurantActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import TextInput from './TextInput';
 
 class RestaurantForm extends React.Component {
     constructor(props, context) {
@@ -11,7 +12,8 @@ class RestaurantForm extends React.Component {
       this.state = {
         restaurant: props.restaurant,
         onSuccessfulSave: props.onSuccessfulSave,
-        restaurants: props.restaurants
+        restaurants: props.restaurants,
+        errors: {}
       };
 
       this.updateRestaurantState = this.updateRestaurantState.bind(this);
@@ -83,35 +85,36 @@ class RestaurantForm extends React.Component {
             <h1>Add Restaurant:</h1>
             <br></br>
 
-            Name: <input
-              type="text"
+            <TextInput
               name="name"
-              onChange={this.updateRestaurantState}></input>
-            <br></br>
-            <br></br>
+              label="Name:"
+              onChange={this.updateRestaurantState}
+              error={this.state.errors.name}
+              />
 
-            Location: <input
-              type="text"
+            <TextInput
               name="location"
-              onChange={this.updateRestaurantState}></input>
-            <br></br>
-            <br></br>
+              label="Location:"
+              onChange={this.updateRestaurantState}
+              error={this.state.errors.location}
+              />
 
+            <b>Rating:</b>
+            <br></br>
             <StarRating
               name="restaurantRating"
               editing
               rating={0}
               onStarClick={this.onStarClick}
               />
-            <br></br>
+            {this.state.errors.rating && <div className="alert alert-danger">{this.state.errors.rating}</div>}
 
-            Comment: <input
-              type="text"
+            <TextInput
               name="comment"
-              onChange={this.updateRestaurantState}></input>
-
-            <br></br>
-            <br></br>
+              label="Comment:"
+              onChange={this.updateRestaurantState}
+              error={this.state.errors.comment}
+              />
 
             <input
               type="submit"
