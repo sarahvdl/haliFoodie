@@ -1,13 +1,13 @@
 import React from 'react';
 
-class ContactPage extends React.Component {
+class AboutPage extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        <p>This will be the contact page.</p>
+        <p>This will be the about page.</p>
       </div>
     );
   }
 }
 
-export default ContactPage;
+export default AboutPage;

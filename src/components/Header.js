@@ -12,12 +12,12 @@ const Header = () => {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <IndexLink to="/" className="navbar-brand">Halifax Foodie</IndexLink>
+            <IndexLink to="/" className="navbar-brand">HF</IndexLink>
           </div>
           <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="nav navbar-nav">
               <li><Link to="/restaurants">Restaurants</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/about">About</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>

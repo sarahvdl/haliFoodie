@@ -9,11 +9,9 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+        <div className="nonHeader">
           {this.props.children}
+        </div>
       </div>
     );
   }

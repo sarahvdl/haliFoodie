@@ -1,7 +1,14 @@
-export default function restaurantReducer(state = 'test', action) {
+import * as types from '../actions/actionTypes';
+import initialState from './initialState';
+
+export default function restaurantReducer(state = initialState, action) {
   switch(action.type) {
-    // case 'ADD_RESTAURANT':
-    //   return 'change later';
+    case types.ADD_RESTAURANT:
+      return [
+        ...this.state,
+        Object.assign({}, action.restaurant)
+      ];
+
     default:
       return state;
   }

@@ -8,8 +8,10 @@ import routes from './routes';
 import './styles/styles.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
+import {loadRestaurants} from './actions/restaurantActions';
 
 const store = configureStore();
+store.dispatch(loadRestaurants());
 
 render(
   <Provider store={store}>
