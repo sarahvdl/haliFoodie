@@ -45,14 +45,17 @@ class RestaurantForm extends React.Component {
       if(this.restaurantExists(this.state.restaurant)) {
         errors.name = 'There is already an entry for this restaurant!';
         formIsValid = false;
-      } else  if(this.state.restaurant.name.length < 1) {
-        errors.name = 'Name must be at least one character.';
+      }
+      if(this.state.restaurant.name.length < 1) {
+        errors.name = 'Name cannot be blank.';
         formIsValid = false;
-      } else if(this.state.restaurant.location.length < 1) {
-        errors.location = 'Location must be at least one character.';
+      }
+      if(this.state.restaurant.location.length < 1) {
+        errors.location = 'Location cannot be blank.';
         formIsValid = false;
-      } else if(!this.state.restaurant.rating) {
-        errors.rating = 'Must include rating.';
+      }
+      if(!this.state.restaurant.rating) {
+        errors.rating = 'Rating cannot be blank.';
         formIsValid = false;
       }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import HeaderImage from './HeaderImage';
+import Footer from './Footer';
 
 class HomePage extends React.Component {
   render() {
@@ -39,16 +40,7 @@ class HomePage extends React.Component {
               <p className="lead">Text text text text text.</p>
           </div>
 
-          <br></br>
-          <br></br>
-          <footer>
-              <div className="row">
-                  <div className="col-lg-12">
-                      <p>Copyright &copy; SVDL 2016</p>
-                  </div>
-              </div>
-          </footer>
-
+          <Footer />
         </div>
 
       </div>

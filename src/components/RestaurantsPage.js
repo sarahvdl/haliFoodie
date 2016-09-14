@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import RestaurantForm from './RestaurantForm';
 import toastr from 'toastr';
 import HeaderImage from './HeaderImage';
+import Footer from './Footer';
 
 class RestaurantsPage extends React.Component {
   constructor(props, context) {
@@ -36,26 +37,22 @@ class RestaurantsPage extends React.Component {
           mainTitle="Restaurants"
           secondaryTitle="Subtitle Here"
           />
-        <RestaurantList
-          restaurants = {restaurants}
-        />
-        {this.state.adding &&
-          <RestaurantForm
-            onSave = {this.saveRestaurant}
-            />}
-        <input
-          type="submit"
-          value="ADD RESTAURANT"
-          className="btn btn-primary center-block"
-          onClick={this.showForm}
+        <div className="container">  
+          <RestaurantList
+            restaurants = {restaurants}
           />
-        <footer>
-            <div className="row">
-                <div className="col-lg-12">
-                    <p>Copyright &copy; SVDL 2016</p>
-                </div>
-            </div>
-        </footer>
+          {this.state.adding &&
+            <RestaurantForm
+              onSave = {this.saveRestaurant}
+              />}
+          {!this.state.adding && <input
+            type="submit"
+            value="ADD RESTAURANT"
+            className="btn btn-primary center-block"
+            onClick={this.showForm}
+            />}
+          <Footer />
+        </div>
       </div>
     );
   }
