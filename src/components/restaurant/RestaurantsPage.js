@@ -32,28 +32,30 @@ class RestaurantsPage extends React.Component {
   render() {
     const {restaurants} = this.props;
     return (
-      <div>
-        <HeaderImage
-          mainTitle="Restaurants"
-          secondaryTitle="My Reviews"
-          />
-        <div className="container">
-          <RestaurantList
-            restaurants = {restaurants}
-          />
-          {this.state.adding &&
-            <RestaurantForm
-              onSave = {this.saveRestaurant}
+      <div className="container-fluid">
+        <div>
+          <HeaderImage
+            mainTitle="Restaurants"
+            secondaryTitle="My Reviews"
+            />
+          <div className="container">
+            <RestaurantList
+              restaurants = {restaurants}
+            />
+            {this.state.adding &&
+              <RestaurantForm
+                onSave = {this.saveRestaurant}
+                />}
+            {!this.state.adding && <input
+              type="submit"
+              value="ADD RESTAURANT"
+              className="btn btn-primary center-block"
+              onClick={this.showForm}
               />}
-          {!this.state.adding && <input
-            type="submit"
-            value="ADD RESTAURANT"
-            className="btn btn-primary center-block"
-            onClick={this.showForm}
-            />}
-          <Footer />
+            <Footer />
+          </div>
         </div>
-      </div>
+    </div>
     );
   }
 }

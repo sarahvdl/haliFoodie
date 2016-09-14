@@ -4,7 +4,7 @@ import HeaderImage from '../common/HeaderImage';
 class ContactPage extends React.Component {
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <HeaderImage
           mainTitle="Contact"
           secondaryTitle="Share your thoughts!"
