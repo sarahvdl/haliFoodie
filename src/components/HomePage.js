@@ -1,22 +1,16 @@
 import React from 'react';
+import HeaderImage from './HeaderImage';
 
 class HomePage extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-
-        <header className="header-image">
-            <div className="headline">
-                <div className="container">
-                    <h1>Halifax Foodie</h1>
-                    <h3>Exploring the Halifax Restaurant Scene</h3>
-                </div>
-            </div>
-        </header>
+        <HeaderImage
+          mainTitle="Halifax Foodie"
+          secondaryTitle="Exploring the Halifax Restaurant Scene"
+          />
 
         <div className="container">
-          <hr className="featurette-divider"></hr>
-
           <div className="featurette">
               <img src={require('../images/icecream.jpg')} className="featurette-image img-circle img-responsive pull-left"></img>
               <h2 className="featurette-heading">Restaurants and Pubs
@@ -34,8 +28,6 @@ class HomePage extends React.Component {
               </h2>
               <p className="lead">Text text text text text text.</p>
           </div>
-
-          <hr className="featurette-divider"></hr>
 
           <hr className="featurette-divider"></hr>
 

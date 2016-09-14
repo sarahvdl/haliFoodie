@@ -94,11 +94,10 @@
     padding: 120px 0;
 }
 
-.headline h1 {
+.mainTitle {
     font-size: 130px;
-    /* background: black; */
+    background: rgba(0,0,0,.75);
     color: white;
-    display: inline;
     padding-left: 25px;
     padding-right: 25px;
 
@@ -106,10 +105,12 @@
     color: black; */
 }
 
-.headline h2 {
-    font-size: 77px;
+.secondaryTitle {
+    font-size: 50px;
     background: #fff;
     background: rgba(255,255,255,0.9);
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .featurette-divider {
