@@ -14,5 +14,6 @@ export default {
       rating: 4,
       comment: "Great burgers!"
     }
-  ]
+  ],
+  adding: false
 };

@@ -10,8 +10,7 @@ class RestaurantsPage extends React.Component {
 
       this.state = {
         restaurants: Object.assign({}, props),
-        adding: false,
-        saving: false
+        adding: false
       };
 
       this.showForm = this.showForm.bind(this);
@@ -24,14 +23,9 @@ class RestaurantsPage extends React.Component {
 
   saveRestaurant(event) {
     event.preventDefault();
-
-    this.setState({saving:true});
+    this.setState({adding: false});
+    toastr.success('RESTAURANT ADDED!');
   }
-
-  redirect() {
-    this.setState({saving: false, adding: false});
-    toastr.success('Restaurant added');
-}
 
   render() {
     const {restaurants} = this.props;
@@ -43,7 +37,6 @@ class RestaurantsPage extends React.Component {
         {this.state.adding &&
           <RestaurantForm
             onSave = {this.saveRestaurant}
-            saving = {this.state.saving}
             />}
         <input
           type="submit"

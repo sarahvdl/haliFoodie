@@ -271,3 +271,7 @@ footer {
   color: white !important;
   border-color: #17c5cf !important;
 }
+
+.toast-success {
+  background-color: #17c5cf !important;
+}
