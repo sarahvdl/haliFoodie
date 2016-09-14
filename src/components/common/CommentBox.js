@@ -7,7 +7,6 @@ const CommentBox = ({title, onChange}) => (
     <textarea
       name="comment"
       rows="10"
-      cols="30"
       onChange={onChange}
       className="form-control"
       />

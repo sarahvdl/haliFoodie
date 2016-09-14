@@ -35,7 +35,7 @@ class RestaurantsPage extends React.Component {
       <div>
         <HeaderImage
           mainTitle="Restaurants"
-          secondaryTitle="Subtitle Here"
+          secondaryTitle="My Reviews"
           />
         <div className="container">
           <RestaurantList

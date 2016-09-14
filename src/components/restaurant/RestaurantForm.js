@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import TextInput from '../common/TextInput';
 import CommentBox from '../common/CommentBox';
+import Dropzone from 'react-dropzone';
 
 class RestaurantForm extends React.Component {
     constructor(props, context) {
@@ -14,13 +15,15 @@ class RestaurantForm extends React.Component {
         restaurant: props.restaurant,
         onSuccessfulSave: props.onSuccessfulSave,
         restaurants: props.restaurants,
-        errors: {}
+        errors: {},
+        files: {}
       };
 
       this.updateRestaurantState = this.updateRestaurantState.bind(this);
       this.submitRestaurant = this.submitRestaurant.bind(this);
       this.onStarClick = this.onStarClick.bind(this);
       this.resetForm = this.resetForm.bind(this);
+      this.onDropPhoto = this.onDropPhoto.bind(this);
     }
 
     updateRestaurantState(event) {
@@ -83,6 +86,14 @@ class RestaurantForm extends React.Component {
       this.setState({restaurant:restaurant});
    }
 
+   onDropPhoto(file) {
+     console.log('in onDropPhoto');
+     console.log(this.state);
+      this.setState({files: file});
+      console.log('after setState');
+      console.log(this.state);
+    }
+
    resetForm(event) {
      let restaurant = {name: "", location: "", rating: "", comment:""};
      return this.setState({restaurant:restaurant});
@@ -92,12 +103,12 @@ class RestaurantForm extends React.Component {
       return (
         <div className="container-fluid">
           <form onSubmit={this.submitRestaurant}>
-            <h1>Add Restaurant:</h1>
+            <h1>Add Restaurant Review:</h1>
             <br></br>
 
             <TextInput
               name="name"
-              label="Name:"
+              label="Restaurant Name:"
               onChange={this.updateRestaurantState}
               error={this.state.errors.name}
               />
@@ -109,7 +120,7 @@ class RestaurantForm extends React.Component {
               error={this.state.errors.location}
               />
 
-            <b>Rating:</b>
+            <b>Overall Rating:</b>
             <br></br>
             <StarRating
               name="restaurantRating"
@@ -123,6 +134,22 @@ class RestaurantForm extends React.Component {
               title="Comments:"
               onChange={this.updateRestaurantState}
               />
+
+            <Dropzone
+              multiple={false}
+              accept="image/*"
+              onDrop={this.onDropPhoto}>
+              <div className="text-center">
+                <br></br>
+                <br></br>
+                <br></br>
+                Click to upload a photo or simply drop one here!
+              </div>
+            </Dropzone>
+            <br></br>
+
+            {this.state.file && <img src={this.state.file.preview} />}
+            <br></br>
 
             <input
               type="submit"
