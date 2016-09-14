@@ -1,6 +1,6 @@
 import React from 'react';
-import HeaderImage from './HeaderImage';
-import Footer from './Footer';
+import HeaderImage from './common/HeaderImage';
+import Footer from './common/Footer';
 
 class HomePage extends React.Component {
   render() {

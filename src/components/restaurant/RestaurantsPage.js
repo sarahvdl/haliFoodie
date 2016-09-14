@@ -3,8 +3,8 @@ import RestaurantList from './RestaurantsList';
 import {connect} from 'react-redux';
 import RestaurantForm from './RestaurantForm';
 import toastr from 'toastr';
-import HeaderImage from './HeaderImage';
-import Footer from './Footer';
+import HeaderImage from '../common/HeaderImage';
+import Footer from '../common/Footer';
 
 class RestaurantsPage extends React.Component {
   constructor(props, context) {
@@ -37,7 +37,7 @@ class RestaurantsPage extends React.Component {
           mainTitle="Restaurants"
           secondaryTitle="Subtitle Here"
           />
-        <div className="container">  
+        <div className="container">
           <RestaurantList
             restaurants = {restaurants}
           />

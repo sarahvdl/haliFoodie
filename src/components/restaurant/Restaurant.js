@@ -1,10 +1,10 @@
 import React, {PropTypes} from 'react';
-import StarRating from './StarRating';
+import StarRating from '../common/StarRating';
 
 const Restaurant = ({name, location, rating, comment}) => (
   <div>
     <div className="featurette">
-        <img src={require('../images/pasta.jpg')} className="featurette-image img-circle img-responsive pull-left"></img>
+        <img src={require('../../images/pasta.jpg')} className="featurette-image img-circle img-responsive pull-left"></img>
         <h2 className="featurette-heading">{name}
             <span className="text-muted"> - {location}</span>
         </h2>

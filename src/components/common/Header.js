@@ -18,6 +18,7 @@ const Header = () => {
             <ul className="nav navbar-nav">
               <li><Link to="/restaurants">Restaurants</Link></li>
               <li><Link to="/about">About</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>

@@ -97,6 +97,7 @@
 .mainTitle {
     font-size: 130px;
     background: rgba(0,0,0,.75);
+    /* background: rgba(23, 197, 207, 0.75); */
     color: white;
     padding-left: 25px;
     padding-right: 25px;
@@ -142,11 +143,11 @@ footer {
 }
 
 @media(max-width:1200px) {
-    .headline h1 {
+    .mainTitle {
         font-size: 140px;
     }
 
-    .headline h2 {
+    .secondaryTitle {
         font-size: 63px;
     }
 
@@ -168,11 +169,11 @@ footer {
 }
 
 @media(max-width:991px) {
-    .headline h1 {
+    .mainTitle {
         font-size: 105px;
     }
 
-    .headline h2 {
+    .secondaryTitle {
         font-size: 50px;
     }
 
@@ -212,11 +213,11 @@ footer {
 }
 
 @media(max-width:668px) {
-    .headline h1 {
+    .mainTitle {
         font-size: 70px;
     }
 
-    .headline h2 {
+    .secondaryTitle {
         font-size: 32px;
     }
 
@@ -230,11 +231,11 @@ footer {
         padding: 75px 0 25px 0;
     }
 
-    .headline h1 {
+    .mainTitle {
         font-size: 60px;
     }
 
-    .headline h2 {
+    .secondaryTitle {
         font-size: 30px;
     }
 }

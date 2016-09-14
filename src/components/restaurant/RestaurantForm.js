@@ -1,9 +1,10 @@
 import React, {PropTypes} from 'react';
-import StarRating from './StarRating';
-import * as restaurantActions from '../actions/restaurantActions';
+import StarRating from '../common/StarRating';
+import * as restaurantActions from '../../actions/restaurantActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import TextInput from './TextInput';
+import TextInput from '../common/TextInput';
+import CommentBox from '../common/CommentBox';
 
 class RestaurantForm extends React.Component {
     constructor(props, context) {
@@ -19,6 +20,7 @@ class RestaurantForm extends React.Component {
       this.updateRestaurantState = this.updateRestaurantState.bind(this);
       this.submitRestaurant = this.submitRestaurant.bind(this);
       this.onStarClick = this.onStarClick.bind(this);
+      this.resetForm = this.resetForm.bind(this);
     }
 
     updateRestaurantState(event) {
@@ -81,6 +83,11 @@ class RestaurantForm extends React.Component {
       this.setState({restaurant:restaurant});
    }
 
+   resetForm(event) {
+     let restaurant = {name: "", location: "", rating: "", comment:""};
+     return this.setState({restaurant:restaurant});
+   }
+
     render() {
       return (
         <div className="container-fluid">
@@ -112,16 +119,20 @@ class RestaurantForm extends React.Component {
               />
             {this.state.errors.rating && <div className="alert alert-danger">{this.state.errors.rating}</div>}
 
-            <TextInput
-              name="comment"
-              label="Comment:"
+            <CommentBox
+              title="Comments:"
               onChange={this.updateRestaurantState}
-              error={this.state.errors.comment}
               />
 
             <input
               type="submit"
               className="btn btn-primary"
+              />
+            &nbsp;&nbsp;&nbsp;
+            <input
+              type="reset"
+              className="btn btn-primary"
+              onClick={this.resetForm}
               />
           </form>
         </div>
