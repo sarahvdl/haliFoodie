@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import StarRating from './StarRating';
 
-const Restaurant = ({key, name, location, rating, comment}) => (
+const Restaurant = ({name, location, rating, comment}) => (
   <div>
     <div className="featurette">
         <img src={require('../images/pasta.jpg')} className="featurette-image img-circle img-responsive pull-left"></img>
@@ -22,7 +22,6 @@ const Restaurant = ({key, name, location, rating, comment}) => (
 );
 
 Restaurant.propTypes = {
-  key: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,

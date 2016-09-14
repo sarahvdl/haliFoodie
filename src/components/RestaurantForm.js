@@ -10,7 +10,8 @@ class RestaurantForm extends React.Component {
 
       this.state = {
         restaurant: props.restaurant,
-        onSave: props.onSave
+        onSuccessfulSave: props.onSuccessfulSave,
+        restaurants: props.restaurants
       };
 
       this.updateRestaurantState = this.updateRestaurantState.bind(this);
@@ -27,8 +28,46 @@ class RestaurantForm extends React.Component {
 
     submitRestaurant(event) {
       event.preventDefault();
-      this.props.actions.addRestaurant(this.state.restaurant);
-      this.state.onSave(event);
+
+      /* If no errors, successful save, else show errors */
+      if(this.formIsValid()) {
+        this.props.actions.addRestaurant(this.state.restaurant);
+        this.state.onSuccessfulSave(event);
+      }
+    }
+
+    formIsValid() {
+      let formIsValid = true;
+      let errors = {};
+
+      if(this.restaurantExists(this.state.restaurant)) {
+        errors.name = 'There is already an entry for this restaurant!';
+        formIsValid = false;
+      } else  if(this.state.restaurant.name.length < 1) {
+        errors.name = 'Name must be at least one character.';
+        formIsValid = false;
+      } else if(this.state.restaurant.location.length < 1) {
+        errors.location = 'Location must be at least one character.';
+        formIsValid = false;
+      } else if(!this.state.restaurant.rating) {
+        errors.rating = 'Must include rating.';
+        formIsValid = false;
+      }
+
+      this.setState({errors: errors});
+      return formIsValid;
+    }
+
+    restaurantExists(restaurant) {
+      let exists = false;
+      const restaurants = this.state.restaurants;
+      for(let i = 0; i < restaurants.length; i++) {
+          if (restaurants[i].name == restaurant.name) {
+              exists = true;
+              break;
+          }
+      }
+      return exists;
     }
 
     onStarClick(nextValue, prevValue, name) {
@@ -85,17 +124,19 @@ class RestaurantForm extends React.Component {
 }
 
 RestaurantForm.propTypes = {
+  restaurants: PropTypes.array.isRequired,
   restaurant: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
-  onSave: PropTypes.func.isRequired
+  onSuccessfulSave: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-  let restaurant = {key: "3", name: '', location: '', rating: '', comment: ''};
+  let restaurant = {name: '', location: '', rating: '', comment: ''};
 
   return {
     restaurant: restaurant,
-    onSave: ownProps.onSave
+    onSuccessfulSave: ownProps.onSave,
+    restaurants: state.restaurantReducer.restaurants
   };
 }
 

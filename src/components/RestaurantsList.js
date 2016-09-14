@@ -5,7 +5,7 @@ const RestaurantsList = ({restaurants}) => (
   <div>
     {restaurants.map(restaurant =>
       <Restaurant
-        key={restaurant.key}
+        key={restaurant.name}
         name={restaurant.name}
         location={restaurant.location}
         rating={restaurant.rating}
