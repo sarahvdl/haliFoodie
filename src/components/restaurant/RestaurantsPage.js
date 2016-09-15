@@ -11,14 +11,17 @@ import * as restaurantActions from '../../actions/restaurantActions';
 class RestaurantsPage extends React.Component {
   constructor(props, context) {
       super(props, context);
-
       this.state = {
-        restaurants: Object.assign({}, props),
-        adding: false
+        adding: false,
+        restaurants: []
       };
 
       this.showForm = this.showForm.bind(this);
       this.saveRestaurant = this.saveRestaurant.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({restaurants: Object.assign({}, nextProps.restaurants)});
   }
 
   showForm() {
@@ -78,9 +81,15 @@ RestaurantsPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-    return {
-      restaurants: state.restaurantReducer.restaurants
-    };
+  let rests = state.restaurants;
+
+  if( Object.prototype.toString.call( state.restaurants ) !== '[object Array]' ) {
+    rests = [];
+  }
+
+  return {
+    restaurants: rests
+  };
 }
 
 function mapDispatchToProps(dispatch) {

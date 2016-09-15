@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import restaurantReducer from './restaurantReducer';
+import restaurants from './restaurantReducer';
 import ajaxStatusReducer from './ajaxStatusReducer';
 
 const rootReducer = combineReducers({
-  restaurantReducer,
+  restaurants,
   ajaxStatusReducer
 });
 

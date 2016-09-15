@@ -17,24 +17,28 @@ export function createRestaurantSuccess(restaurant) {
 export function loadRestaurants() {
   return function(dispatch) {
     dispatch(beginAjaxCall());
-    return api.getAllRestaurants().then(restaurants => {
-      dispatch(loadRestaurantsSuccess(restaurants));
-    }).catch(error => {
-      throw(error);
-    });
+    return api.getAllRestaurants()
+      .then(restaurants => {
+        dispatch(loadRestaurantsSuccess(restaurants));
+      }).catch(error => {
+        throw(error);
+      });
   };
 }
 
 export function saveRestaurant(restaurant) {
   return function (dispatch, getState) {
     dispatch(beginAjaxCall());
-    return api.saveRestaurant(restaurant).then(savedRestaurant => {
+    return api.saveRestaurant(restaurant, savedRestaurant => {
         dispatch(createRestaurantSuccess(savedRestaurant));
-        console.log('successfully added restaurant!'); }
-    ).catch(error => {
-      console.log('did not successfully create restaurant!');
-      dispatch(ajaxCallError(error));
-      throw(error);
-    });
+        console.log('successfully added restaurant!'); });
+    // .then(savedRestaurant => {
+    //     dispatch(createRestaurantSuccess(savedRestaurant));
+    //     console.log('successfully added restaurant!'); }
+    // ).catch(error => {
+    //   console.log('did not successfully create restaurant!');
+    //   dispatch(ajaxCallError(error));
+    //   throw(error);
+    // });
   };
 }

@@ -170,12 +170,15 @@ RestaurantForm.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+  console.log('in mapStateToProps in restaurantsPage');
+  console.log('state:');
+  console.log(state);
   let restaurant = {name: '', location: '', rating: '', comment: ''};
 
   return {
     restaurant: restaurant,
     onSuccessfulValidation: ownProps.onSave,
-    restaurants: state.restaurantReducer.restaurants
+    restaurants: state.restaurants
   };
 }
 
