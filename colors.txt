@@ -1,0 +1,5 @@
+AQUA:
+
+Light: #19dce5
+Medium: #17c5cf
+Darker: #0d6e73

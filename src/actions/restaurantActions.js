@@ -1,9 +1,40 @@
 import * as types from './actionTypes';
+// import api from '../api/mockRestaurantApi';  //to point to a real api, just need to change this
+import api from '../api/api';
+import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
-export function addRestaurant(restaurant) {
-  return {type: types.ADD_RESTAURANT, restaurant};
+/// ACTION CREATORS ///
+export function loadRestaurantsSuccess(restaurants) {
+  return {type: types.LOAD_RESTAURANTS_SUCCESS, restaurants};
 }
 
+export function createRestaurantSuccess(restaurant) {
+  return {type: types.CREATE_RESTAURANT_SUCCESS, restaurant};
+}
+
+
+/// THUNKS ///
 export function loadRestaurants() {
-  return {type: types.LOAD_RESTAURANTS};
+  return function(dispatch) {
+    dispatch(beginAjaxCall());
+    return api.getAllRestaurants().then(restaurants => {
+      dispatch(loadRestaurantsSuccess(restaurants));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+export function saveRestaurant(restaurant) {
+  return function (dispatch, getState) {
+    dispatch(beginAjaxCall());
+    return api.saveRestaurant(restaurant).then(savedRestaurant => {
+        dispatch(createRestaurantSuccess(savedRestaurant));
+        console.log('successfully added restaurant!'); }
+    ).catch(error => {
+      console.log('did not successfully create restaurant!');
+      dispatch(ajaxCallError(error));
+      throw(error);
+    });
+  };
 }

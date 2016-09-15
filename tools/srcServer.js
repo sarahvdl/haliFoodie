@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import path from 'path';
 import config from '../webpack.config.dev';
 import open from 'open';
+import MongoClient from 'mongodb';
 
 /* eslint-disable no-console */
 
@@ -27,4 +28,8 @@ app.listen(port, function(err) {
   } else {
     open(`http://localhost:${port}`);
   }
+});
+
+app.post("restaurants", function(req, res) {
+  console.log("received request to / restaurants");
 });

@@ -13,7 +13,7 @@ class RestaurantForm extends React.Component {
 
       this.state = {
         restaurant: props.restaurant,
-        onSuccessfulSave: props.onSuccessfulSave,
+        onSuccessfulValidation: props.onSuccessfulValidation,
         restaurants: props.restaurants,
         errors: {},
         files: {}
@@ -36,10 +36,9 @@ class RestaurantForm extends React.Component {
     submitRestaurant(event) {
       event.preventDefault();
 
-      /* If no errors, successful save, else show errors */
+      /* If no errors, successful continue, else show errors */
       if(this.formIsValid()) {
-        this.props.actions.addRestaurant(this.state.restaurant);
-        this.state.onSuccessfulSave(event);
+        this.state.onSuccessfulValidation(event, this.state.restaurant);
       }
     }
 
@@ -87,11 +86,7 @@ class RestaurantForm extends React.Component {
    }
 
    onDropPhoto(file) {
-     console.log('in onDropPhoto');
-     console.log(this.state);
       this.setState({files: file});
-      console.log('after setState');
-      console.log(this.state);
     }
 
    resetForm(event) {
@@ -171,7 +166,7 @@ RestaurantForm.propTypes = {
   restaurants: PropTypes.array.isRequired,
   restaurant: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
-  onSuccessfulSave: PropTypes.func.isRequired
+  onSuccessfulValidation: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -179,7 +174,7 @@ function mapStateToProps(state, ownProps) {
 
   return {
     restaurant: restaurant,
-    onSuccessfulSave: ownProps.onSave,
+    onSuccessfulValidation: ownProps.onSave,
     restaurants: state.restaurantReducer.restaurants
   };
 }

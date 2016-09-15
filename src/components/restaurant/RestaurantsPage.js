@@ -5,6 +5,8 @@ import RestaurantForm from './RestaurantForm';
 import toastr from 'toastr';
 import HeaderImage from '../common/HeaderImage';
 import Footer from '../common/Footer';
+import {bindActionCreators} from 'redux';
+import * as restaurantActions from '../../actions/restaurantActions';
 
 class RestaurantsPage extends React.Component {
   constructor(props, context) {
@@ -23,8 +25,17 @@ class RestaurantsPage extends React.Component {
     this.setState({adding:true});
   }
 
-  saveRestaurant(event) {
+  saveRestaurant(event, restaurant) {
     event.preventDefault();
+
+    this.props.actions.saveRestaurant(restaurant)
+      .then(() => this.redirect())
+      .catch(error => {
+        toastr.error(error);
+      });
+  }
+
+  redirect() {
     this.setState({adding: false});
     toastr.success('RESTAURANT ADDED!');
   }
@@ -62,7 +73,8 @@ class RestaurantsPage extends React.Component {
 
 RestaurantsPage.propTypes = {
   restaurants: PropTypes.array.isRequired,
-  adding: PropTypes.bool
+  adding: PropTypes.bool,
+  actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -71,4 +83,10 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(RestaurantsPage);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(restaurantActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantsPage);

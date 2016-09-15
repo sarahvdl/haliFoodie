@@ -1,5 +1,6 @@
 import React from 'react';
 import HeaderImage from '../common/HeaderImage';
+import ContactForm from './ContactForm';
 
 class ContactPage extends React.Component {
   render() {
@@ -10,6 +11,7 @@ class ContactPage extends React.Component {
           secondaryTitle="Share your thoughts!"
           />
         <div className="container">
+          <ContactForm />
 
 
         </div>

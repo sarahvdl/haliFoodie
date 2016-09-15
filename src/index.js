@@ -11,6 +11,13 @@ import '../node_modules/toastr/build/toastr.min.css';
 import {loadRestaurants} from './actions/restaurantActions';
 
 const store = configureStore();
+
+store.subscribe(() => {
+  console.log("Store Changed!");
+  console.log(store.getState());
+  }
+);
+
 store.dispatch(loadRestaurants());
 
 render(

@@ -3,7 +3,7 @@ import initialState from './initialState';
 
 export default function restaurantReducer(state = initialState, action) {
   switch(action.type) {
-    case types.ADD_RESTAURANT:
+    case types.CREATE_RESTAURANT_SUCCESS:
     {
       let newRestaurants = state.restaurants.slice();
       newRestaurants.push(action.restaurant);
