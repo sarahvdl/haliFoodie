@@ -20,10 +20,6 @@ class RestaurantsPage extends React.Component {
       this.saveRestaurant = this.saveRestaurant.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({restaurants: Object.assign({}, nextProps.restaurants)});
-  }
-
   showForm() {
     this.setState({adding:true});
   }
@@ -44,6 +40,7 @@ class RestaurantsPage extends React.Component {
   }
 
   render() {
+    console.log('in render in restaurantsPage');
     const {restaurants} = this.props;
     return (
       <div className="container-fluid">
@@ -81,6 +78,7 @@ RestaurantsPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+  console.log('in mapStateToProps in RestaurantsPage');
   let rests = state.restaurants;
 
   if( Object.prototype.toString.call( state.restaurants ) !== '[object Array]' ) {

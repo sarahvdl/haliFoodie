@@ -25,7 +25,6 @@ class RestaurantApi {
   }
 
   static saveRestaurant(restaurant) {
-    console.log("In saveRestaurant in mock api");
     restaurant = Object.assign({}, restaurant); // to avoid manipulating object passed in.
       return new Promise((resolve, reject) => {
         setTimeout(() => {

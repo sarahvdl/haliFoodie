@@ -22,36 +22,17 @@ class RestaurantApi {
     });
   }
 
-  // static saveRestaurant(restaurant) {
-  //   console.log("In saveRestaurant in real api");
-  //   restaurant = Object.assign({}, restaurant); // to avoid manipulating object passed in.
-  //   return new Promise((resolve, reject) => {
-  //     console.log('in api add restaurant with restaurant:');
-  //     console.log(restaurant);
-  //
-  //     $.ajax({
-  //       url: this.getUrl("restaurantsData"),
-  //       type: "POST",
-  //       data: restaurant
-  //     });
-  //
-  //     console.log('after ajax call!');
-  //
-  //     resolve(restaurant);
-  //   });
-  // }
-
   static saveRestaurant(restaurant) {
-    console.log("In saveRestaurant in real api");
     restaurant = Object.assign({}, restaurant); // to avoid manipulating object passed in.
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        url: this.getUrl("restaurantsData"),
+        type: "POST",
+        data: {restaurant: restaurant}
+      });
 
-    $.ajax({
-      url: this.getUrl("restaurantsData"),
-      type: "POST",
-      data: restaurant
+      resolve(Object.assign({}, restaurant));
     });
-
-    console.log('after ajax call!');
   }
 }
 
