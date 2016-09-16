@@ -18,6 +18,7 @@ class RestaurantsPage extends React.Component {
 
       this.showForm = this.showForm.bind(this);
       this.saveRestaurant = this.saveRestaurant.bind(this);
+      this.deleteRestaurant = this.deleteRestaurant.bind(this);
   }
 
   showForm() {
@@ -34,13 +35,22 @@ class RestaurantsPage extends React.Component {
       });
   }
 
+  deleteRestaurant(event, restaurant) {
+    event.preventDefault();
+
+    this.props.actions.deleteRestaurant(restaurant)
+      .then(() => toastr.success('RESTAURANT DELETED!'))
+      .catch(error => {
+        toastr.error(error);
+      });
+  }
+
   redirect() {
     this.setState({adding: false});
     toastr.success('RESTAURANT ADDED!');
   }
 
   render() {
-    console.log('in render in restaurantsPage');
     const {restaurants} = this.props;
     return (
       <div className="container-fluid">
@@ -52,6 +62,7 @@ class RestaurantsPage extends React.Component {
           <div className="container">
             <RestaurantList
               restaurants = {restaurants}
+              onDelete = {this.deleteRestaurant}
             />
             {this.state.adding &&
               <RestaurantForm
@@ -78,7 +89,6 @@ RestaurantsPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  console.log('in mapStateToProps in RestaurantsPage');
   let rests = state.restaurants;
 
   if( Object.prototype.toString.call( state.restaurants ) !== '[object Array]' ) {

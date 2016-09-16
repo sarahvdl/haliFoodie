@@ -68,10 +68,34 @@ app.post("/restaurantsData", function(req, res) {
     console.log(err);
   }
 
-  console.log('about to attempt to insert new restaurant!');
   let collection = db.collection("restaurants");
 
   collection.insert(restaurant, function(err, result) {
+    if(err) {
+      res.json({result: "failed", error: err});
+      return console.log(err);
+    }
+
+    res.send(restaurant);
+    });
+  });
+});
+
+app.post("/restaurantsDelete", function(req, res) {
+  console.log("received POST request to / restaurantsData");
+
+  const restaurant = req.body.restaurant;
+  const restaurantName = req.body.restaurant.name;
+
+  MongoClient.connect("mongodb://localhost:27017/haliFoodie", function(err, db) {
+  if(err) {
+    res.send({error: "could not connect to database"});
+    console.log(err);
+  }
+
+  let collection = db.collection("restaurants");
+
+  collection.remove({name: restaurantName}, function(err, result) {
     if(err) {
       res.json({result: "failed", error: err});
       return console.log(err);

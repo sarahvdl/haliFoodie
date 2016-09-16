@@ -42,3 +42,19 @@ export function saveRestaurant(restaurant) {
       });
   };
 }
+
+export function deleteRestaurant(restaurant) {
+  return function (dispatch) {
+    dispatch(beginAjaxCall());
+    return api.deleteRestaurant(restaurant)
+      .then(() => {
+          dispatch(loadRestaurants());
+          console.log('successfully deleted restaurant!'); })
+      .catch(error => {
+        console.log('did not successfully delete restaurant!');
+        console.log(error);
+        dispatch(ajaxCallError(error));
+        throw(error);
+      });
+  };
+}

@@ -17,7 +17,6 @@ const Restaurant = ({name, location, rating, comment}) => (
         </div>
         <p className="lead">{comment}</p>
     </div>
-    <hr className="restaurant-divider"></hr>
   </div>
 );
 

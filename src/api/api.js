@@ -34,6 +34,19 @@ class RestaurantApi {
       resolve(Object.assign({}, restaurant));
     });
   }
+
+  static deleteRestaurant(restaurant) {
+    restaurant = Object.assign({}, restaurant); // to avoid manipulating object passed in.
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        url: this.getUrl("restaurantsDelete"),
+        type: "POST",
+        data: {restaurant: restaurant}
+      });
+
+      resolve(Object.assign({}, restaurant));
+    });
+  }
 }
 
 export default RestaurantApi;
