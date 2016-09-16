@@ -26,6 +26,10 @@ class RestaurantForm extends React.Component {
       this.onDropPhoto = this.onDropPhoto.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+      this.setState({restaurants: Object.assign({}, nextProps.restaurants)});
+    }
+
     updateRestaurantState(event) {
       const field = event.target.name;
       let restaurant = this.state.restaurant;

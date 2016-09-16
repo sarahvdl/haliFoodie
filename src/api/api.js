@@ -43,8 +43,7 @@ class RestaurantApi {
         type: "POST",
         data: {restaurant: restaurant}
       });
-
-      // resolve(Object.assign({}, restaurant));
+      
       resolve();
     });
   }
