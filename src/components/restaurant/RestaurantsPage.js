@@ -70,7 +70,7 @@ class RestaurantsPage extends React.Component {
                 />}
             {!this.state.adding && <input
               type="submit"
-              value="ADD RESTAURANT"
+              value="ADD REVIEW"
               className="btn btn-primary center-block"
               onClick={this.showForm}
               />}
@@ -91,7 +91,7 @@ RestaurantsPage.propTypes = {
 function mapStateToProps(state, ownProps) {
   let rests = state.restaurants;
 
-  if( Object.prototype.toString.call( state.restaurants ) !== '[object Array]' ) {
+  if(Object.prototype.toString.call( state.restaurants ) !== '[object Array]') {
     rests = [];
   }
 
