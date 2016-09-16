@@ -14,7 +14,10 @@ class RemoveButton extends React.Component {
   }
 
   deleteHelper(event) {
-    this.state.onClick(event, this.state.restaurant);
+    const result = confirm("Are you sure you want to remove this restaurant?");
+    if (result) {
+      this.state.onClick(event, this.state.restaurant);
+    }
   }
 
   render() {

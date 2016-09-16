@@ -44,7 +44,8 @@ class RestaurantApi {
         data: {restaurant: restaurant}
       });
 
-      resolve(Object.assign({}, restaurant));
+      // resolve(Object.assign({}, restaurant));
+      resolve();
     });
   }
 }

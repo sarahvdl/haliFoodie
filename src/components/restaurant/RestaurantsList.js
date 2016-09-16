@@ -24,7 +24,8 @@ const RestaurantsList = ({restaurants, onDelete}) => (
 );
 
 RestaurantsList.propTypes = {
-  restaurants: PropTypes.array.isRequired
+  restaurants: PropTypes.array.isRequired,
+  onDelete: PropTypes.func.isRequired
 };
 
 export default RestaurantsList;

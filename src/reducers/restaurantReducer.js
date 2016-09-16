@@ -17,6 +17,11 @@ export default function restaurantReducer(state = initialState, action) {
       };
     }
 
+    case types.REMOVE_RESTAURANT_SUCCESS:
+    {
+      return state;
+    }
+
     default:
       return state;
   }

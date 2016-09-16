@@ -12,6 +12,9 @@ export function createRestaurantSuccess(restaurant) {
   return {type: types.CREATE_RESTAURANT_SUCCESS, restaurant};
 }
 
+export function deleteRestaurantSuccess() {
+  return {type: types.REMOVE_RESTAURANT_SUCCESS};
+}
 
 /// THUNKS ///
 export function loadRestaurants() {
@@ -48,6 +51,7 @@ export function deleteRestaurant(restaurant) {
     dispatch(beginAjaxCall());
     return api.deleteRestaurant(restaurant)
       .then(() => {
+          dispatch(deleteRestaurantSuccess());
           dispatch(loadRestaurants());
           console.log('successfully deleted restaurant!'); })
       .catch(error => {
