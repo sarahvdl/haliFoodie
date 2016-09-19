@@ -152,6 +152,7 @@ class RestaurantForm extends React.Component {
 
             <input
               type="submit"
+              value="Add"
               className="btn btn-primary"
               />
             &nbsp;&nbsp;&nbsp;

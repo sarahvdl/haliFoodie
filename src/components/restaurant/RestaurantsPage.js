@@ -19,6 +19,7 @@ class RestaurantsPage extends React.Component {
       this.showForm = this.showForm.bind(this);
       this.saveRestaurant = this.saveRestaurant.bind(this);
       this.deleteRestaurant = this.deleteRestaurant.bind(this);
+      this.editRestaurant = this.editRestaurant.bind(this);
   }
 
   showForm() {
@@ -45,6 +46,14 @@ class RestaurantsPage extends React.Component {
       });
   }
 
+  editRestaurant(event, restaurant) {
+    event.preventDefault();
+    console.log('inside editRestaurant with restaurant: ');
+    console.log(restaurant);
+
+    //TODO: add edit functionality
+  }
+
   redirect() {
     this.setState({adding: false});
     toastr.success('RESTAURANT ADDED!');
@@ -63,6 +72,7 @@ class RestaurantsPage extends React.Component {
             <RestaurantList
               restaurants = {restaurants}
               onDelete = {this.deleteRestaurant}
+              onEdit = {this.editRestaurant}
             />
             {this.state.adding &&
               <RestaurantForm
