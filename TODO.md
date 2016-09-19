@@ -8,3 +8,4 @@ TODO:
 - [ ] Redo star rating component on my own (or find new one) - current library produces warnings in browser
 - [ ] Change all images to be my own images instead of images from google
 - [ ] Can add duplicate restaurants if whitespace is added anywhere in the title 
+- [ ] Does not work if database is not setup - fix this
