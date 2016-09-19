@@ -3,9 +3,9 @@
 This is a project I am creating for fun to learn React and Redux.
 
 <hr>
-
-npm install
-npm start -s
+1) setup db (see below) <br>
+2) npm install <br>
+3) npm start -s
 
 Found at: localhost:3000
 
