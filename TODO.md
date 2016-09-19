@@ -1,7 +1,8 @@
 TODO:
 
 - [x] Clicking REMOVE with Add Restaurant form open does not update form state properly (FIXED w/ ```componentWillReceiveProps```)
-- [ ] Add edit functionality (currently has a button that does nothing)
+- [ ] Add edit functionality to existing reviews (currently has a button that does nothing)
+- [ ] Finish home page - currently all placeholder text/images
 - [ ] Add signup/login/profile page 
 - [ ] Update contact form to automatically send an email instead of opening email client
 - [ ] Fix/finish photo uploading logic
